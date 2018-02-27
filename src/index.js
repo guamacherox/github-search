@@ -9,7 +9,7 @@ import 'angular-messages';
 import 'angular-animate';
 import routesConfig from './routes';
 
-import 'angular-material/angular-material.css';
+import 'angular-material/angular-material.min.css';
 import './index.scss';
 
 export const app = 'app';
