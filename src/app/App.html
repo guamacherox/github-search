@@ -1,0 +1,42 @@
+<div layout="column" layout-align="center none" layout-fill>
+  <div layout="column" layout-align="center center">
+    <div flex>
+      <div layout="column" layout-align="center">
+        <img width="300" src="/img/github.svg" alt="github">
+        <h3 class="md-title">{{ $ctrl.message }}</h3>
+      </div>
+    </div>
+    <div flex style="min-width: 35vw;" layout-padding>
+      <md-input-container class="md-block">
+        <!-- Use floating label instead of placeholder -->
+        <input type="text" ng-model="$ctrl.user">
+      </md-input-container>
+      <md-button ng-click="$ctrl.searchUsers()"> Search </md-button>
+    </div>
+  </div>
+  <div layout="column" layout-align="center">
+
+      <md-content flex layout-padding>
+        <md-list>
+          <md-list-item ng-repeat="user in $ctrl.users">
+            <div flex=10>
+              <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="" />
+            </div>
+            <div flex>
+              <div layout layout-align="center start">
+
+              </div>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-content>
+
+  </div>
+</div>
+
+
+
+
+
+
+
