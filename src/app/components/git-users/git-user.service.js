@@ -5,8 +5,11 @@ export class GitUserService {
     this.$http = $http;
     this.ApiBase = ApiBase;
   }
-  getContacts(user) {
+  getUsers(user) {
     const URL = this.ApiBase + '/search/users?q=' + user;
     return this.$http.get(URL);
+  }
+  getUserFollowers(url) {
+    return this.$http.get(url);
   }
 }
