@@ -28,9 +28,9 @@
       <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
     <div ng-if="!$ctrl.loading" layout="column" flex layout-align="center stretch">
-      <md-content flex layout-padding style="border: 1px solid blue" layout-align="space-around">
+      <md-content flex layout-padding layout-align="space-around">
         <md-list>
-          <md-list-item ng-repeat="user in $ctrl.users">
+          <md-list-item ng-repeat="user in $ctrl.users" flex>
             <div flex=10>
               <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="" />
             </div>
