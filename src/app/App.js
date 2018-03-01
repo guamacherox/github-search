@@ -8,6 +8,10 @@ class AppController {
     this.users = [];
     this.searching = false;
     this.loading = false;
+    this.error = {
+      active: false,
+      message: ''
+    };
     this.gitUserService = GitUserService;
   }
   searchUsers() {
@@ -25,6 +29,8 @@ class AppController {
         })
         .catch(error => {
           this.$log.error(error);
+          this.error.active = true;
+          this.error.message = error.data.message;
           this.searching = false;
           this.loading = false;
         });
@@ -48,6 +54,8 @@ class AppController {
         })
         .catch(error => {
           this.$log.log(error);
+          this.error.active = true;
+          this.error.message = error.data.message;
         });
     }
     return this.users;
