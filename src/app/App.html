@@ -1,72 +1,76 @@
-<div layout="row" layout-align="center center">
-  <div flex>    
-    <div layout="column" layout-align="center center">
-      <div flex layout="column" layout-align="center center" layout-padding>
-        <div layout="column" layout-align="center">
+<section id="header" class="section">
+  <div class="container is-fluid">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
           <img class="logo" src="/img/github.svg" alt="github">
-        </div>
-        <div layout="column" layout-align="center">
-          <h3 class="md-title">{{ $ctrl.message }}</h3>
-        </div>
+        </div>        
       </div>
-    </div>
-    <div layout="row" layout-align="center center" layout-fill>
-      <div flex-xs="66" flex-gt-sm="33">
-        <md-input-container class="md-block">
-          <!-- Use floating label instead of placeholder -->
-          <input aria-label="search" class="text-big" type="text" ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus/>
-        </md-input-container>
-      </div>
-    </div>
-  </div>  
-</div>
-<div layout="row" layout-align="center center">
-  <div flex flex-gt-sm="33">
-    <div layout="column" layout-align="center center" ng-if="$ctrl.error.active">
-        <p class="text-red">{{$ctrl.error.message}}</p>
-    </div>
-    
-    <div ng-if="$ctrl.searching" layout="row" layout-align="center center">      
-      <div flex>
-        <div layout="column" layout-align="center center">
-          <div ng-if="$ctrl.loading">
-            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+      <div class="level-right">
+        <div class="level-item">
+          <div class="field">
+            <div class="control has-icons-right">
+              <input type="text" class="input is-medium" placeholder="Buscar en GitHub..." ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus>
+              <span class="icon is-small is-right" ng-if="!$ctrl.loading">
+                <i class="fas fa-search"></i>
+              </span>
+              <span class="icon is-right" ng-if="$ctrl.loading">
+                <i class="fas fa-circle-notch fa-pulse"></i>
+              </span>
+            </div>
           </div>
         </div>
-        <md-content md-whiteframe="1" ng-if="!$ctrl.loading">          
-          <md-list>
-            <md-list-item ng-repeat="user in $ctrl.users">
-              <div flex ="33">
-                <img ng-src="{{user.avatar_url}}" class="md-avatar" alt="" />
-              </div>
-              <div flex> 
-                <div class="md-list-item-text text-align-center" layout="column">
-                  <h4>{{user.login}}</h4>
-                </div flex>
-              </div>
-              <div flex>               
-                <div class="md-list-item-text">                  
-                  <h4 class="text-align-right" ng-if="user.followers.length > 0" ng-repeat="follower in user.followers">{{follower.login}}</h4>
-                  <h4 class="text-align-right" ng-if="!user.followers.length">Sin Seguidores</h4>                  
-                </div>               
-              </div>            
-            </md-list-item>
-          </md-list>
-        </md-content>        
-      </div>
-    </div>
-  </div>  
-</div>
-<div layout="row" layout-align="center center">
-  <div flex>
-    <h4 class=" md-body-2 text-align-center text-color-">2018 © Retargetly</h4>    
+      </div>      
+    </nav>
   </div>
-</div>
-
-
-
-
-
-
-
-
+</section>
+<section id="content" class="section">
+  <div class="container is-fluid" ng-if="$ctrl.searching">    
+    <table class="table is-fullwidth is-bordered is-hoverable" ng-if="!$ctrl.loading && $ctrl.users.length > 0">
+      <thead>
+        <tr>
+          <th>
+            Avatar
+          </th>          
+          <th>
+            Username
+          </th>
+          <th>
+            Seguidores
+          </th>          
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>
+            Avatar
+          </th>
+          <th>
+            Username
+          </th>
+          <th>
+            Seguidores
+          </th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr ng-repeat="user in $ctrl.users">
+          <th>
+            <figure class="image is-48x48">
+              <img ng-src="{{user.avatar_url}}" alt="avatar" />              
+            </figure>
+          </th>
+          <td>
+            {{user.login}}
+          </td>         
+          <td>
+            <ul>
+              <li href="#" ng-repeat="follower in user.followers">{{follower.login}} </li>
+              <li ng-if="!user.followers.length" href="#">Sin seguidores</li>
+            </ul>            
+          </td>
+        </tr>        
+      </tbody>
+    </table>
+  </div>
+</section>

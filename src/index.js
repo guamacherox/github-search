@@ -9,13 +9,14 @@ import 'angular-messages';
 import 'angular-animate';
 import routesConfig from './routes';
 
-import 'angular-material/angular-material.min.css';
+// import 'angular-material/angular-material.min.css';
+import 'bulma/css/bulma.css';
 import './index.scss';
 
 export const app = 'app';
 
 angular
-  .module(app, ['ui.router', 'ngMaterial', 'ngMessages'])
+  .module(app, ['ui.router'])
   .config(routesConfig)
   .constant('ApiBase', API_BASE)
   .service('GitUserService', GitUserService)

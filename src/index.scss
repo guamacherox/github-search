@@ -3,8 +3,7 @@ $white: #fff;
 $red: red;
 
 body, html {
-  background-color: $white;
-  padding-top: 25px;
+  background-color: $white;  
 }
 
 //Color Classes
@@ -30,7 +29,7 @@ body, html {
 
 // Custom Classes
 .logo {
-  width: 30vw;
+  width: 20vw;
 }
 
 input.text-big{
