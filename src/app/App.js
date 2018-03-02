@@ -45,11 +45,7 @@ class AppController {
         .then(response => {
           this.$log.log('followers for' + user.login);
           const length = response.data.length;
-          if (length) {
-            user.followers = response.data;
-          } else {
-            user.followers = null;
-          }
+          user.followers = length ? response.data : null;
           this.users.push(user);
         })
         .catch(error => {

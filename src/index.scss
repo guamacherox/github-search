@@ -2,8 +2,9 @@
 $white: #fff;
 $red: red;
 
-body {
+body, html {
   background-color: $white;
+  padding-top: 25px;
 }
 
 //Color Classes
@@ -19,13 +20,23 @@ body {
   color: $red;
 }
 
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+// Custom Classes
 .logo {
-  width: 25vw;
+  width: 30vw;
 }
 
 input.text-big{
   font-size: 2.1rem;
   height: 8vh;
+  text-align: center;
 }
 
 
@@ -34,28 +45,28 @@ input.text-big{
 /* Custom, iPhone Retina */
  @media only screen and (min-width: 320px) {
   .logo {
-    width: 60vw;
+    width: 50vw;
   }
  }
 
  /* Extra Small Devices, Phones */
  @media only screen and (min-width: 480px) {
   .logo {
-    width: 50vw;
+    width: 30vw;
   }
  }
 
  /* Small Devices, Tablets */
  @media only screen and (min-width: 768px) {
   .logo {
-    width: 40vw;
+    width: 30vw;
   }
  }
 
  /* Medium Devices, Desktops */
  @media only screen and (min-width: 992px) {
   .logo {
-    width: 30vw;
+    width: 20vw;
   }
  }
 
