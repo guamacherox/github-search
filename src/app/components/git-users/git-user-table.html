@@ -1,4 +1,4 @@
-<table class="table is-fullwidth is-bordered is-hoverable">
+<table class="table is-fullwidth is-bordered is-hoverable is-narrow">
     <thead>
         <tr>
             <th>
@@ -37,7 +37,7 @@
             </td>
             <td>
                 <ul>
-                    <li href="#" ng-repeat="follower in user.followers">{{follower.login}}</li>
+                    <li href="#" ng-repeat="follower in user.followers"><a href="#">{{follower.login}}</a></li>
                     <li ng-if="!user.followers.length" href="#">Sin seguidores</li>
                 </ul>
             </td>

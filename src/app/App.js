@@ -3,7 +3,6 @@ class AppController {
   constructor(GitUserService, $log) {
     'ngInject';
     this.$log = $log;
-    this.message = 'Tu buscador de usuarios GitHub';
     this.user = '';
     this.users = [];
     this.searching = false;
