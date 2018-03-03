@@ -2,6 +2,7 @@ import angular from 'angular';
 import {API_BASE} from './app/config';
 
 import {App} from './app/App';
+import {gitUserTableComponent} from './app/components/git-users/git-user-table';
 import {GitUserService} from './app/components/git-users/git-user.service';
 import 'angular-ui-router';
 import 'angular-material';
@@ -9,7 +10,6 @@ import 'angular-messages';
 import 'angular-animate';
 import routesConfig from './routes';
 
-// import 'angular-material/angular-material.min.css';
 import 'bulma/css/bulma.css';
 import './index.scss';
 
@@ -20,4 +20,5 @@ angular
   .config(routesConfig)
   .constant('ApiBase', API_BASE)
   .service('GitUserService', GitUserService)
+  .component('gitUserTable', gitUserTableComponent)
   .component('app', App);

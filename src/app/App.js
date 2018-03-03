@@ -8,7 +8,7 @@ class AppController {
     this.users = [];
     this.searching = false;
     this.loading = false;
-    this.noResults = false;
+    this.noResults = false; // Determina si hubo o no resultados en la búsqueda.
     this.error = {
       active: false,
       message: ''
@@ -27,7 +27,6 @@ class AppController {
         .then(async response => {
           if (response.data.items.length) {
             await this.searchFollowers(response.data.items);
-            this.$log.log(response);
           } else {
             this.noResults = true;
           }
@@ -53,7 +52,6 @@ class AppController {
     for (const user of users) {
       await this.gitUserService.getUserFollowers(user.followers_url)
         .then(response => {
-          this.$log.log('followers for' + user.login);
           const length = response.data.length;
           user.followers = length ? response.data : null;
           this.users.push(user);

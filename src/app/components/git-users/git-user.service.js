@@ -1,4 +1,6 @@
-
+/**
+ * @description Servicio para la conexión con la API de github.
+*/
 export class GitUserService {
   constructor($http, ApiBase) {
     'ngInject';
@@ -7,13 +9,6 @@ export class GitUserService {
     this.clientId = '7300bf3a22909989fdb5';
     this.clientSecret = '47311167016524db192b6ee2550b0bdae57322e9';
   }
-  // getUsers(user) {
-  //   const URL = `${this.ApiBase.baseURL}/search/users?q=${user}&per_page=10`;
-  //   return this.$http.get(URL, {headers: {Authorization: `token ${this.ApiBase.token}`}});
-  // }
-  // getUserFollowers(url) {
-  //   return this.$http.get(`${url}?per_page=3`, {headers: {Authorization: `token ${this.ApiBase.token}`}});
-  // }
   getUsers(user) {
     const URL = `${this.ApiBase.baseURL}/search/users?q=${user}&per_page=10&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
     return this.$http.get(URL);

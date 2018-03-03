@@ -1,0 +1,48 @@
+<table class="table is-fullwidth is-bordered is-hoverable">
+    <thead>
+        <tr>
+            <th>
+                Avatar
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Seguidores
+            </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>
+                Avatar
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Seguidores
+            </th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="user in $ctrl.users">
+            <th>
+                <figure class="image is-48x48">
+                    <img ng-src="{{user.avatar_url}}" alt="avatar" />
+                </figure>
+            </th>
+            <td>
+                {{user.login}}
+            </td>
+            <td>
+                <ul>
+                    <li href="#" ng-repeat="follower in user.followers">{{follower.login}}</li>
+                    <li ng-if="!user.followers.length" href="#">Sin seguidores</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
