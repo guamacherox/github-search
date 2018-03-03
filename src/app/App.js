@@ -21,6 +21,7 @@ class AppController {
       this.loading = true;
       this.noResults = false;
       this.users = [];
+      this.error.active = false;
       this.gitUserService
         .getUsers(this.user)
         .then(async response => {
@@ -44,6 +45,7 @@ class AppController {
       this.searching = false;
       this.loading = false;
       this.noResults = false;
+      this.error.active = false;
       this.users = [];
     }
   }

@@ -1,4 +1,4 @@
-<section id="header" class="section container-shadowed">
+<section id="header" class="section container-shadowed light-blue">
   <div class="container is-fluid">
     <nav class="level">
       <div class="level-left">
@@ -21,11 +21,15 @@
     </nav>
   </div>
 </section>
-<section class="section fade">  
-  <div class="container-is-fluid has-text-centered" ng-show="!$ctrl.searching" >
+
+<section id="messages" class="section" ng-show="!$ctrl.searching">  
+  <div class="container-is-fluid has-text-centered">
     <h1 class="title">Busca cualquier usuario</h1>
     <h3 class="subtitle">Por favor escribe el nombre del <strong>usuario</strong></h3>
-  </div>
+  </div>  
+</section>
+
+<section class="section" ng-if="$ctrl.noResults || $ctrl.error.active">
   <div class="container-is-fluid has-text-centered" ng-show="$ctrl.noResults">
     <div class="columns is-centered">
       <div class="column is-half">
@@ -37,7 +41,22 @@
       </div>
     </div>
   </div>
+  <div class="container-is-fluid has-text-centered" ng-show="$ctrl.error.active">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="message is-danger">
+          <div class="message-header">
+            <p>Atención</p>
+          </div>
+          <div class="message-body">
+            {{$ctrl.error.message}}
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
 </section>
+
 <section id="content" class="section fade" ng-if="!$ctrl.loading && $ctrl.users.length > 0">  
   <div class="container is-fluid">    
     <table class="table is-fullwidth is-bordered is-hoverable">

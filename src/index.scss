@@ -1,6 +1,7 @@
 //COLOR SETTINGS
 $white: #fff;
 $red: red;
+$ligt-blue: lightblue;
 
 body, html {
   background-color: $white;  
@@ -9,6 +10,10 @@ body, html {
 //Color Classes
 .white {
   background-color: $white;
+}
+
+.light-blue {
+  background-color: $ligt-blue;
 }
 
 .text-white{
