@@ -8,6 +8,7 @@ class AppController {
     this.users = [];
     this.searching = false;
     this.loading = false;
+    this.noResults = false;
     this.error = {
       active: false,
       message: ''
@@ -18,14 +19,19 @@ class AppController {
     if (this.user.length >= 4) {
       this.searching = true;
       this.loading = true;
+      this.noResults = false;
       this.users = [];
-      this.followerPromises = [];
       this.gitUserService
         .getUsers(this.user)
         .then(async response => {
-          await this.searchFollowers(response.data.items);
-          this.$log.log(response);
+          if (response.data.items.length) {
+            await this.searchFollowers(response.data.items);
+            this.$log.log(response);
+          } else {
+            this.noResults = true;
+          }
           this.loading = false;
+          return;
         })
         .catch(error => {
           this.$log.error(error);
@@ -37,6 +43,8 @@ class AppController {
     } else {
       this.searching = false;
       this.loading = false;
+      this.noResults = false;
+      this.users = [];
     }
   }
   async searchFollowers(users) {
@@ -54,7 +62,6 @@ class AppController {
           this.error.message = error.data.message;
         });
     }
-    return this.users;
   }
 }
 

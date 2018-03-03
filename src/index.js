@@ -16,7 +16,7 @@ import './index.scss';
 export const app = 'app';
 
 angular
-  .module(app, ['ui.router'])
+  .module(app, ['ui.router', 'ngAnimate'])
   .config(routesConfig)
   .constant('ApiBase', API_BASE)
   .service('GitUserService', GitUserService)

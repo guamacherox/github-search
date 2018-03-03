@@ -1,4 +1,4 @@
-<section id="header" class="section">
+<section id="header" class="section container-shadowed">
   <div class="container is-fluid">
     <nav class="level">
       <div class="level-left">
@@ -9,14 +9,11 @@
       <div class="level-right">
         <div class="level-item">
           <div class="field">
-            <div class="control has-icons-right">
-              <input type="text" class="input is-medium" placeholder="Buscar en GitHub..." ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus>
+            <div class="control has-icons-right is-medium"  ng-class="{'is-loading':$ctrl.loading}">
+              <input type="text"class="input is-medium" placeholder="Buscar en GitHub..." ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus>
               <span class="icon is-small is-right" ng-if="!$ctrl.loading">
                 <i class="fas fa-search"></i>
-              </span>
-              <span class="icon is-right" ng-if="$ctrl.loading">
-                <i class="fas fa-circle-notch fa-pulse"></i>
-              </span>
+              </span>              
             </div>
           </div>
         </div>
@@ -24,9 +21,26 @@
     </nav>
   </div>
 </section>
-<section id="content" class="section">
-  <div class="container is-fluid" ng-if="$ctrl.searching">    
-    <table class="table is-fullwidth is-bordered is-hoverable" ng-if="!$ctrl.loading && $ctrl.users.length > 0">
+<section class="section fade">  
+  <div class="container-is-fluid has-text-centered" ng-show="!$ctrl.searching" >
+    <h1 class="title">Busca cualquier usuario</h1>
+    <h3 class="subtitle">Por favor escribe el nombre del <strong>usuario</strong></h3>
+  </div>
+  <div class="container-is-fluid has-text-centered" ng-show="$ctrl.noResults">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <article class="message is-warning">
+          <div class="message-body">
+            No se encontro ningun usuario con ese nombre.
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="content" class="section fade" ng-if="!$ctrl.loading && $ctrl.users.length > 0">  
+  <div class="container is-fluid">    
+    <table class="table is-fullwidth is-bordered is-hoverable">
       <thead>
         <tr>
           <th>
