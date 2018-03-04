@@ -2,8 +2,8 @@
  * @description Servicio para la conexión con la API de github.
 */
 export class GitUserService {
+  /** @ngInject */
   constructor($http, ApiBase) {
-    'ngInject';
     this.$http = $http;
     this.ApiBase = ApiBase;
     this.clientId = '7300bf3a22909989fdb5';

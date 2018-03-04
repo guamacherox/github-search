@@ -13,36 +13,29 @@ module.exports = {
     loaders: [
       {
         test: /\.json$/,
-        loaders: [
-          'json-loader'
-        ]
+        loaders: ["json-loader"]
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
-        enforce: 'pre'
+        loader: "eslint-loader",
+        enforce: "pre"
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css|scss|sass)$/,
         loaders: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?minimize!sass-loader!postcss-loader'
+          fallback: "style-loader",
+          use: "css-loader?minimize!sass-loader!postcss-loader"
         })
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: [
-          'ng-annotate-loader',
-          'babel-loader'
-        ]
+        loaders: ["ng-annotate-loader", "babel-loader"]
       },
       {
         test: /\.html$/,
-        loaders: [
-          'html-loader'
-        ]
+        loaders: ["html-loader"]
       }
     ]
   },
@@ -51,14 +44,14 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     FailPlugin,
     new HtmlWebpackPlugin({
-      template: conf.path.src('index.html')
+      template: conf.path.src("index.html")
     }),
     new webpack.optimize.UglifyJsPlugin({
-      output: {comments: false},
-      compress: {unused: true, dead_code: true, warnings: false} // eslint-disable-line camelcase
+      output: { comments: false },
+      compress: { unused: true, dead_code: true, warnings: false } // eslint-disable-line camelcase
     }),
-    new ExtractTextPlugin('index-[contenthash].css'),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
+    new ExtractTextPlugin("index-[contenthash].css"),
+    new webpack.optimize.CommonsChunkPlugin({ name: "vendor" }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: () => [autoprefixer]
@@ -67,10 +60,10 @@ module.exports = {
   ],
   output: {
     path: path.join(process.cwd(), conf.paths.dist),
-    filename: '[name]-[hash].js'
+    filename: "[name]-[hash].js"
   },
   entry: {
-    app: `./${conf.path.src('index')}`,
+    app: ['babel-polyfill', `./${conf.path.src("index")}`],
     vendor: Object.keys(pkg.dependencies)
   }
 };

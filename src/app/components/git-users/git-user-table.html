@@ -1,11 +1,8 @@
-<table class="table is-fullwidth is-bordered is-hoverable is-narrow">
+<table class="table is-fullwidth is-bordered is-hoverable">
     <thead>
-        <tr>
+        <tr>            
             <th>
-                Avatar
-            </th>
-            <th>
-                Username
+                Usuario
             </th>
             <th>
                 Seguidores
@@ -15,11 +12,8 @@
     <tfoot>
         <tr>
             <th>
-                Avatar
-            </th>
-            <th>
-                Username
-            </th>
+                Usuario
+            </th>            
             <th>
                 Seguidores
             </th>
@@ -27,13 +21,17 @@
     </tfoot>
     <tbody>
         <tr ng-repeat="user in $ctrl.users">
-            <th>
-                <figure class="image is-48x48">
-                    <img ng-src="{{user.avatar_url}}" alt="avatar" />
-                </figure>
-            </th>
             <td>
-                {{user.login}}
+                <div class="columns is-paddingless is-mobile">                    
+                    <div class="column is-narrow">
+                        <figure class="image is-32x32">
+                            <img ng-src="{{user.avatar_url}}" alt="avatar" />
+                        </figure>           
+                    </div>               
+                    <div class="column is-narrow">
+                        <a href="#">{{user.login}}</a>    
+                    </div>
+                </div>                
             </td>
             <td>
                 <ul>

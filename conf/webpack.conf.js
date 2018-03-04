@@ -22,7 +22,7 @@ module.exports = {
         enforce: 'pre'
       },
       {
-        test: /\.(css|scss)$/,
+        test: /\.(css|sass|scss)$/,
         loaders: [
           'style-loader',
           'css-loader',
@@ -65,5 +65,5 @@ module.exports = {
     path: path.join(process.cwd(), conf.paths.tmp),
     filename: 'index.js'
   },
-  entry: `./${conf.path.src('index')}`
+  entry: ['babel-polyfill', `./${conf.path.src('index')}`]
 };

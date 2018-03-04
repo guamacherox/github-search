@@ -10,7 +10,7 @@
         <div class="level-item">
           <div class="field">
             <div class="control has-icons-right is-medium"  ng-class="{'is-loading':$ctrl.loading}">
-              <input type="text"class="input is-medium" placeholder="Buscar en GitHub..." ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus>
+              <input type="text"class="input is-medium is-info" placeholder="Buscar en GitHub..." ng-model="$ctrl.user" ng-change="$ctrl.searchUsers()" ng-model-options="{debounce: 500}" autofocus>
               <span class="icon is-small is-right" ng-if="!$ctrl.loading">
                 <i class="fas fa-search"></i>
               </span>              
@@ -25,7 +25,7 @@
 <section id="messages" class="section" ng-show="!$ctrl.searching">  
   <div class="container-is-fluid has-text-centered">
     <h1 class="title">Busca cualquier usuario</h1>
-    <h3 class="subtitle">Por favor escribe <strong>cuatro caracteres</strong></h3>
+    <h3 class="subtitle">Por favor escribe <strong class="has-text-info">cuatro caracteres</strong></h3>
   </div>  
 </section>
 
@@ -55,7 +55,8 @@
 </section>
 
 <section id="content" class="section fade" ng-if="!$ctrl.loading && $ctrl.users.length > 0">  
-  <div class="container is-fluid">    
+  <div class="container is-fluid">
+    <!-- User Table Component Invocation -->
     <git-user-table
       users="$ctrl.users">
     </git-user-table>

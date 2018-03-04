@@ -1,5 +1,6 @@
 
 class GitUserTableController {
+
   constructor($log) {
     'ngInject';
     this.$log = $log;

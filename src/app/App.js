@@ -1,5 +1,6 @@
 
 class AppController {
+
   constructor(GitUserService, $log) {
     'ngInject';
     this.$log = $log;
