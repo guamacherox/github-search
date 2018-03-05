@@ -2,6 +2,9 @@
 
 > Github Search App (Builded with AngularJS)
 
+## Live Demo
+[GitHub Search](https://dist-lqjnzoamtj.now.sh/)
+
 ## Build Setup
 
 ``` bash
