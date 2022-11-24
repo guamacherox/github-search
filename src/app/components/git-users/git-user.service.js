@@ -6,8 +6,8 @@ export class GitUserService {
   constructor($http, ApiBase) {
     this.$http = $http;
     this.ApiBase = ApiBase;
-    this.clientId = '7300bf3a22909989fdb5';
-    this.clientSecret = '47311167016524db192b6ee2550b0bdae57322e9';
+    this.clientId = process.env.CLIENT_ID;
+    this.clientSecret = process.env.CLIENT_SECRET;
   }
   getUsers(user) {
     const URL = `${this.ApiBase.baseURL}/search/users?q=${user}&per_page=10&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
